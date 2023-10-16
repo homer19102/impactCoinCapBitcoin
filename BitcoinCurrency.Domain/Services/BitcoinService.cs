@@ -57,7 +57,7 @@ namespace BitcoinCurrency.Domain.Services
             emailMessage.Subject = $"Bitcoin abaixo do valor {SystemTime.Now.ToString("dd/MM/yyyy")}";
 
             BodyBuilder emailBodyBuilder = new BodyBuilder();
-            emailBodyBuilder.TextBody = $"Bitcoin abaixo do valor de R$ 300.000,00 \n\nValor atual da cotação por conversão R$ {valorConvertido}\n\nValor coincap US$ {coincapUsdBitcoin}\n\nBase de cálculo R$ {realValueToDolar}";
+            emailBodyBuilder.TextBody = $"Bitcoin abaixo do valor de R$ {Comum.GetParameterByKey("valorMinimoBitcoin")} \n\nValor atual da cotação por conversão R$ {valorConvertido}\n\nValor coincap US$ {coincapUsdBitcoin}\n\nBase de cálculo R$ {realValueToDolar}";
             emailMessage.Body = emailBodyBuilder.ToMessageBody();
             
             var smtp = new MailKit.Net.Smtp.SmtpClient();
